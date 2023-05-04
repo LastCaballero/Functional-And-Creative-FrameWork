@@ -98,7 +98,7 @@ class TimeButton {
     GetCalculated() {
         let reversed = this.Stamps.reverse()
         let accumulate = (acm, curv) => acm + curv
-        return (reversed.reduce(accumulate, 0) / reversed.length) / 1000
+        return ((reversed.reduce(accumulate, 0) / reversed.length) / 1000)
     }
     SetP1() {
         this.P1.innerHTML = this.GetCalculated()
