@@ -73,12 +73,8 @@ class TimeButton {
     GetButton() { return this.Button }
     GetStamps() { return this.Stamps }
     GetCalculated(){
-        return Math.floor(this.Stamps.reduce((acc, date, index) => {
-            if (index === 0) {
-              return 0;
-            }
-            const diffInMilliseconds = date - this.Stamps[index - 1];
-            return acc + diffInMilliseconds;
-          }, 0) / 1000 );
+        let reversed = this.Stamps.reverse()
+        let accumulate = (acm, curv) => acm + curv
+        return reversed.reduce(accumulate ,0) / reversed.length
     }
 }
