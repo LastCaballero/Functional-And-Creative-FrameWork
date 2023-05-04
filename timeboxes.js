@@ -57,24 +57,50 @@ class HourCapsule extends Capsule {
     }
 }
 
+
+
 class TimeButton {
     Button
     Stamps
-    constructor() {
-        this.Button = document.createElement('button')
-        this.Button.innerHTML = new Date().toLocaleTimeString()
+    DIV
+    P1
+    P2
+    constructP1() {
+        this.P1 = document.createElement('p')
+    }
+    constructP2() {
+        this.P2 = document.createElement('p')
+    }
 
-        this.Stamps = []
-        this.Button.onclick = () => { 
-            this.Stamps.append(new Date()) 
-            this.Button.innerHTML = new Date().toLocaleTimeString()
+    constructButton(inner) {
+        this.Button = document.createElement('Button')
+        this.Button.innerHTML = inner
+        this.Button.onclick = () => {
+            if( this.Stamps.push(new Date().getMilliseconds()) > 1 ) {
+                this.SetP1()
+            } 
+            
         }
     }
-    GetButton() { return this.Button }
+    constructDiv() {
+        this.DIV = document.createElement('div')
+        this.DIV.append(this.Button, this.P1, this.P2)
+    }
+    constructor(btn_inner) {
+        this.Stamps = []
+        this.constructP1()
+        this.constructP2()
+        this.constructButton(btn_inner)
+        this.constructDiv()
+    }
+    GetDiv() { return this.DIV }
     GetStamps() { return this.Stamps }
-    GetCalculated(){
+    GetCalculated() {
         let reversed = this.Stamps.reverse()
         let accumulate = (acm, curv) => acm + curv
-        return reversed.reduce(accumulate ,0) / reversed.length
+        return (reversed.reduce(accumulate, 0) / reversed.length) / 1000
+    }
+    SetP1() {
+        this.P1.innerHTML = this.GetCalculated()
     }
 }
