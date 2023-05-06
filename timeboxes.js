@@ -78,6 +78,7 @@ class TimeButton {
         this.Button.onclick = () => {
             if( this.Stamps.push(new Date().getTime()) > 1 ) {
                 this.SetP1()
+                this.SetP2()
             } 
             
         }
@@ -104,6 +105,9 @@ class TimeButton {
         return ((sum / this.Stamps.length) / 1000).toFixed(3)
     }
     SetP1() {
-        this.P1.innerHTML = this.GetCalculated()
+        this.P1.innerHTML = "average: " + this.GetCalculated()
+    }
+    SetP2(){
+        this.P2.innerHTML = "counts: " + this.Stamps.length
     }
 }
