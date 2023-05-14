@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time-Boxes</title>
+    <script src="aoi.js"></script>
+    <style>
+        body{
+            margin: 45px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        div#main {
+            display: flex;
+            gap: 10px ;
+        }
+        
+    </style>
+</head>
+<body>
+    <div style="margin-bottom:25px">
+        <input type="text" name="" id="countername" title="Counter-Name">
+        <button onclick="clear_and_add()">Add-TimeBox</button>
+    </div>
+    <div id="main">
+        
+    </div>
+    
+    <script>
+        const inp_name = document.getElementById('countername')
+        const main = document.getElementById('main')
+        function clear_and_add(){
+            let button_value = 'some name'
+            if (inp_name.value != '') {
+                button_value = inp_name.value 
+            }
+            main.append(new TimeButton(button_value).Get())
+            inp_name.value = null
+        }
+    </script>
+</body>
+</html>
