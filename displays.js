@@ -1,8 +1,6 @@
 
 
-class Display {
 
-}
 
 class CalcDisplay {
     P1
@@ -33,6 +31,10 @@ class CalcDisplay {
     Rub(){
         let ac_val = this.P1.innerHTML
         this.P1.innerHTML = ac_val.substring(0, ac_val.length - 1 )
+        this.SetP2()
+        if(this.P1.innerHTML == ''){
+            this.P2.innerHTML = ''
+        }
     }
     Set(newval) {
         this.P1.innerHTML = this.P1.innerHTML + String(newval)
