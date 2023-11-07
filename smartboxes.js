@@ -81,6 +81,7 @@ class CounterRow {
         
         this.text.innerHTML = count
         
+        this.button.innerHTML = name
         this.button.onclick = () => {
             count++
             CounterRow.sum      += this.count
@@ -95,7 +96,6 @@ class CounterRow {
         return this.div
     }
 }
-
 
 
 
