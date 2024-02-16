@@ -1,13 +1,17 @@
+function ce( what ) {
+    return document.createElement( what )
+}
+
 
 function ActionButton( inner, action ) {
-    let button = document.createElement('button')
+    let button = ce('button')
     button.innerText = inner
     button.onclick = action
     return button
 }
 
 function CounterButton() {
-    let button = document.createElement('button')
+    let button = ce('button')
     let val = 0
     button.innerText = val
     button.onclick = () => {
@@ -18,7 +22,7 @@ function CounterButton() {
 }
 
 function Seconds() {
-    let par = document.createElement('p')
+    let par = ce('p')
     let digit
     window.setInterval(() => {
         digit = new Date().getSeconds()
@@ -29,7 +33,7 @@ function Seconds() {
 }
 
 function Minutes() {
-    let par = document.createElement('p')
+    let par = ce('p')
     let digit
     window.setInterval(() => {
         digit = new Date().getMinutes()
@@ -40,7 +44,7 @@ function Minutes() {
 }
 
 function Hours() {
-    let par = document.createElement('p')
+    let par = ce('p')
     let digit
     window.setInterval(() => {
         digit = new Date().getHours()
