@@ -1,6 +1,4 @@
-function ce( what ) {
-    return document.createElement( what )
-}
+let ce = ( what ) => document.createElement( what )
 
 
 function ActionButton( inner, action ) {
