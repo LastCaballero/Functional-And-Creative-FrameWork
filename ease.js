@@ -5,6 +5,8 @@ function Standard( what, inner, enrichment ){
     return comp ;
 }
 
+
+
 function ActionButton( inner, action ) {
     let button = document.createElement('button')
     button.innerText = inner
@@ -23,18 +25,27 @@ function CounterButton() {
     return button
 }
 
+function ActionParagraph ( action ) {
+    let p = document.createElement('p')
+    p.style.border = '1px solid blue'
+    p.style.borderRadius = '8px'
+    p.style.color = 'white'
+    p.onclick = action
+    return p
+}
+
 function NamedCounterButton (number ,name){
     let button = document.createElement('button')
-    let num = number ? number : 0
-    let descr = name ? name : 'some name'
-    button.innerHTML = num + '<br>' + descr 
+    let p_num = document.createElement('p')
+    let p_text = document.createElement('p')
+    p_text.setAttribute('contenteditable', 'true')
+    button.append(p_num, p_text)
+    p_num.innerText = number ? number : 0
+    p_text.innerText = name ? name : 'some name'
     button.onclick = () => {
-        num++
-        button.innerHTML = num + '<br>' + descr
+        (p_num.innerText)++
     }
-    button.onauxclick = () => {
-        button.innerHTML = num + '<br>' + prompt("neuen Namen eingeben:")
-    }
+    
     return button
 }
 
