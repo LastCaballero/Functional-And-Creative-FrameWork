@@ -23,6 +23,21 @@ function CounterButton() {
     return button
 }
 
+function NamedCounterButton (number ,name){
+    let button = document.createElement('button')
+    let num = number ? number : 0
+    let descr = name ? name : 'some name'
+    button.innerHTML = num + '<br>' + descr 
+    button.onclick = () => {
+        num++
+        button.innerHTML = num + '<br>' + descr
+    }
+    button.onauxclick = () => {
+        button.innerHTML = num + '<br>' + prompt("neuen Namen eingeben:")
+    }
+    return button
+}
+
 function CounterButtonGroup( n ) {
     let buttons = new Array( n )
     for (let index = 0; index < buttons.length; index++) {
