@@ -74,7 +74,7 @@ function CounterButtonGroup(n) {
 
 
 function ButtonActionGroup( name, num ) {
-    let group = document.createElement('div')
+    let group = Box('div')
     group.style.display = 'grid'
     group.style.gridTemplateColumns = '1fr 1fr 1fr 1fr 1fr'
     group.style.gap = '5px'
