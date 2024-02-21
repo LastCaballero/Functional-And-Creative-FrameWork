@@ -75,8 +75,9 @@ function CounterButtonGroup(n) {
 
 function ButtonActionGroup( name, num ) {
     let group = Box('div')
+    group.style.margin = '5px'
     group.style.display = 'grid'
-    group.style.gridTemplateColumns = '1fr 1fr 1fr 1fr 1fr'
+    group.style.gridTemplateColumns = '1fr 1fr 1fr 1fr 1fr 1fr'
     group.style.gap = '5px'
     let display_num = NumberedParagraph( num ? num : 0 )
     let display_text = StandardComponent('p', name ? name : 'no name')
@@ -85,12 +86,18 @@ function ButtonActionGroup( name, num ) {
             display_text.innerText = prompt('change text...')
         }
     )
+    let del = ActionButton(
+        'delete', () => {
+            group.remove()
+        }
+    )
     let plus = ActionButton( '+', () => { display_num.Up() } )
     let minus = ActionButton( '-', () => { display_num.Down() } )
     group.append(
         display_num,
         display_text,
         change,
+        del,
         plus,
         minus
     )
