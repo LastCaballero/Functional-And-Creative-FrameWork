@@ -86,15 +86,15 @@ function ButtonActionGroup( name, num ) {
     )
     let plus = ActionButton( '+', () => { display_num.Up() } )
     let minus = ActionButton( '-', () => { display_num.Down() } )
+    group.append(
+        display_num,
+        display_text,
+        change,
+        plus,
+        minus
+    )
+    return group
 }
-
-
-
-
-
-
-
-
 
 
 function Seconds() {
