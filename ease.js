@@ -1,3 +1,5 @@
+let Box = () => { return document.createElement('div') }
+
 function StandardComponent(what, inner, enrichment) {
     let comp = document.createElement(what)
     comp.innerText = inner
@@ -23,8 +25,6 @@ function NumberedParagraph ( num ) {
     p.Down = () => { ( p.innerText )-- }
     return p
 }
-
-
 
 function ActionButton(inner, action) {
     let button = document.createElement('button')
@@ -128,4 +128,18 @@ function Hours() {
         par.innerText = digit
     }, 1000)
     return par
+}
+
+function DigitalClock( gap ){
+    let clock = Box()
+    clock.style.display = 'flex'
+    clock.style.gap = gap ? gap: 4
+    clock.append(
+        Hours(),
+        StandardComponent('p', ':'),
+        Minutes(),
+        StandardComponent('p', ':'),
+        Seconds()
+    )
+    return clock
 }
