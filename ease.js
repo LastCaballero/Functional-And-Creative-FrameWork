@@ -73,10 +73,11 @@ function CounterButtonGroup(n) {
 }
 
 
-
-
 function ButtonActionGroup( name, num ) {
     let group = document.createElement('div')
+    group.style.display = 'grid'
+    group.style.gridTemplateColumns = '1fr 1fr 1fr 1fr 1fr'
+    group.style.gap = '5px'
     let display_num = NumberedParagraph( num ? num : 0 )
     let display_text = StandardComponent('p', name ? name : 'no name')
     let change = ActionButton(
@@ -131,6 +132,8 @@ function Hours() {
 }
 
 function DigitalClock( gap ){
+    let wrapper = Box()
+    wrapper.style.display = 'inline'
     let clock = Box()
     clock.style.display = 'flex'
     clock.style.gap = gap ? gap: 4
@@ -141,5 +144,6 @@ function DigitalClock( gap ){
         StandardComponent('p', ':'),
         Seconds()
     )
-    return clock
+    wrapper.append( clock )
+    return wrapper
 }
