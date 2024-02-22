@@ -1,5 +1,25 @@
 let Box = () => { return document.createElement('div') }
 
+class Factory {
+    static Component
+
+    static Create ( what ) {
+        this.Component = document.createElement( what )
+    }
+
+    static Content ( inner ) {
+        this.Component.innerText = inner
+    }
+
+    static Enrichment () {
+
+    }
+    static Get () {
+        return Object.create( this.Component )
+    }
+}
+
+
 function StandardComponent(what, inner, enrichment) {
     let comp = document.createElement(what)
     comp.innerText = inner
@@ -153,4 +173,17 @@ function DigitalClock( gap ){
     )
     wrapper.append( clock )
     return wrapper
+}
+
+function CycleComponent ( stdcomponent , size, millisecs ) {
+    let comp = stdcomponent ? stdcomponent : StandardComponent('p','hallo')
+    comp.style.width = size ? size : 200
+    comp.style.height = size ? size : 200
+    comp.style.border = '1px solid black'
+    let timeout = millisecs ? millisecs : 1000 
+    window.setInterval(() => {
+        let secs = new Date().getSeconds()
+        comp.style.rotate =  360/secs + "deg"
+    }, timeout)
+    return comp
 }
