@@ -11,8 +11,8 @@ class Factory {
         this.Component.innerText = inner
     }
 
-    static Enrichment () {
-
+    static Enrichment ( enrichment ) {
+        Object.assign(this.Component, enrichment )
     }
     static Get () {
         return Object.create( this.Component )
